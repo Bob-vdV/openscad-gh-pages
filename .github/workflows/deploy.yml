@@ -36,7 +36,7 @@ jobs:
         uses: docker/setup-docker-action@v4
       - name: Build static content
         run: |
-          git clone git@github.com:openscad/openscad-playground.git playground
+          git clone https://github.com/openscad/openscad-playground.git playground
           cd playground
           make build
           npm install
