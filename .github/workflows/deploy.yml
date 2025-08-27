@@ -41,7 +41,7 @@ jobs:
         run: |
           ls
           cat Makefile
-          make build
+          make public
           npm install
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
