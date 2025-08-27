@@ -39,6 +39,8 @@ jobs:
       - name: Build static content
         working-directory: ./playground
         run: |
+          ls
+          cat makefile
           make build
           npm install
       - name: Upload artifact
