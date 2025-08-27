@@ -41,6 +41,8 @@ jobs:
         run: |
           make public
           npm install
+          NODE_ENV=production npm run build
+          rm -fR ../ochafik.github.io/openscad2 && cp -R dist ../ochafik.github.io/openscad2 
           ls
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
