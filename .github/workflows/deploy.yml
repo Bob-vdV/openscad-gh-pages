@@ -32,19 +32,18 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      -
-        name: Set up Docker
+      - name: Set up Docker
         uses: docker/setup-docker-action@v4
       - name: Build static content
         run: |
-          git clone git@github.com:openscad/openscad-playground.git ./
+          git clone git@github.com:openscad/openscad-playground.git playground
+          cd playground
           make build
           npm install
-          npm start
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: './dist'
+          path: 'playground/dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
