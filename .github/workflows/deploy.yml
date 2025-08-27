@@ -40,7 +40,7 @@ jobs:
         working-directory: ./playground
         run: |
           ls
-          cat makefile
+          cat Makefile
           make build
           npm install
       - name: Upload artifact
