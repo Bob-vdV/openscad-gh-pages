@@ -34,10 +34,11 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Set up Docker
         uses: docker/setup-docker-action@v4
+      - name: Clone openscad playground
+        run: git clone https://github.com/openscad/openscad-playground.git playground
       - name: Build static content
+        working-directory: ./playground
         run: |
-          git clone https://github.com/openscad/openscad-playground.git playground
-          cd playground
           make build
           npm install
       - name: Upload artifact
