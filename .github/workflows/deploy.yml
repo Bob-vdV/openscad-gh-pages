@@ -37,12 +37,11 @@ jobs:
       - name: Clone openscad playground
         run: git clone https://github.com/openscad/openscad-playground.git playground
       - name: Build static content
-        working-directory: ./playground
+        working-directory: playground
         run: |
-          ls
-          cat Makefile
           make public
           npm install
+          ls
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
