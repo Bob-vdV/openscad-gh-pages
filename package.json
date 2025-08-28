@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Bob-vdV/openscad-gh-pages#readme",
   "devDependencies": {
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1"
   }
 }
