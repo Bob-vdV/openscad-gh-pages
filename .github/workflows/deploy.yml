@@ -35,7 +35,9 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-docker-action@v4
       - name: Clone openscad playground
-        run: git clone https://github.com/openscad/openscad-playground.git playground
+        run: git clone https://github.com/Bob-vdV/openscad-playground.git playground
+      - name: Copy openscad file
+        run: cp test-file.scad playground/public/playground.scad
       - name: Build static content
         working-directory: playground
         run: |
