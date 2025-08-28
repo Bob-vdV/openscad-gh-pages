@@ -10,7 +10,7 @@ on:
     branches: ["main"]
   workflow_dispatch: 
 jobs:
-  hello:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.openscad-deployment.outputs.page_url }}
