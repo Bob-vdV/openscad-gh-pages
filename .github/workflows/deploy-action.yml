@@ -1,5 +1,10 @@
 name: "Deploy openscad file to GH pages"
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 on:
   push:
     branches: ["main"]
@@ -16,4 +21,5 @@ jobs:
         uses: ./
         id: openscad-deployment
         with:
+          repository: Bob-vdV/openscad-gh-pages 
           filename: "t2.scad"
