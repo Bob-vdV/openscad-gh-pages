@@ -30,33 +30,33 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Set up Docker
-        uses: docker/setup-docker-action@v4
-      - name: Clone openscad playground
-        run: git clone https://github.com/Bob-vdV/openscad-playground.git playground
-      - name: Copy openscad file
-        run: cp ${{ inputs.filename }} playground/public/playground.scad
-      - name: Build static content
-        working-directory: playground
-        run: |
-          make public
-          npm install
-          NODE_ENV=production npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: 'playground/dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+runs:
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+  runs-on: ubuntu-latest
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - name: Set up Docker
+      uses: docker/setup-docker-action@v4
+    - name: Clone openscad playground
+      run: git clone https://github.com/Bob-vdV/openscad-playground.git playground
+    - name: Copy openscad file
+      run: cp ${{ inputs.filename }} playground/public/playground.scad
+    - name: Build static content
+      working-directory: playground
+      run: |
+        make public
+        npm install
+        NODE_ENV=production npm run build
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v4
+      with:
+        path: 'playground/dist'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

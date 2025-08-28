@@ -1,6 +1,8 @@
 name: "Hello"
 
 on:
+  push:
+    branches: ["actions"]
   workflow_dispatch: 
 jobs:
   hello:
