@@ -1,0 +1,24 @@
+{
+  "name": "openscad-gh-pages",
+  "version": "1.0.0",
+  "description": "Deployed on [http://bobvdv.nl/openscad-gh-pages/](http://bobvdv.nl/openscad-gh-pages/)",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bob-vdV/openscad-gh-pages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bob-vdV/openscad-gh-pages/issues"
+  },
+  "homepage": "https://github.com/Bob-vdV/openscad-gh-pages#readme",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

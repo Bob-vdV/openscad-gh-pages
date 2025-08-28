@@ -1,0 +1,8 @@
+name: "Publish openscad file to playground"
+description: "Hosts an openscad file using openscad-playgound"
+author: "Bob van der Vuurst"
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
+  
