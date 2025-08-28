@@ -1,8 +1,8 @@
-name: "Hello"
+name: "Deploy openscad file to GH pages"
 
 on:
   push:
-    branches: ["actions"]
+    branches: ["main"]
   workflow_dispatch: 
 jobs:
   hello:

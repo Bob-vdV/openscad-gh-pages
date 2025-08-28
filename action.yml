@@ -1,18 +1,3 @@
-#name: "Publish openscad file to playground"
-#description: "Hosts an openscad file using openscad-playgound"
-#author: "Bob van der Vuurst"
-
-#inputs:
-#  filename:
-#    description: "Openscad filename"
-#    required: true
-#    default: "test-file.scad"
-
-
-#runs:
-#  using: "node16"
-#  main: "dist/index.js"
-
 name: "Publish openscad file to playground"
 description: "Hosts an openscad file using openscad-playgound"
 author: "Bob van der Vuurst"
