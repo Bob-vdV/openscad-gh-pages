@@ -13,13 +13,20 @@
 #  using: "node16"
 #  main: "dist/index.js"
 
-name: Deploy to Github Pages
+name: "Publish openscad file to playground"
+description: "Hosts an openscad file using openscad-playgound"
+author: "Bob van der Vuurst"
 
 inputs:
   filename:
     description: "Openscad filename"
     required: true
     default: "test-file.scad"
+
+outputs:
+  page_url:
+    description: "url of github pages deployment"
+    value: ${{ steps.deployment.outputs.page_url }}
 
 permissions:
   contents: read
@@ -31,10 +38,6 @@ concurrency:
   cancel-in-progress: true
 
 runs:
-  environment:
-    name: github-pages
-    url: ${{ steps.deployment.outputs.page_url }}
-  runs-on: ubuntu-latest
   using: "composite"
   steps:
     - name: Checkout
@@ -45,14 +48,17 @@ runs:
       uses: docker/setup-docker-action@v4
     - name: Clone openscad playground
       run: git clone https://github.com/Bob-vdV/openscad-playground.git playground
+      shell: bash
     - name: Copy openscad file
       run: cp ${{ inputs.filename }} playground/public/playground.scad
+      shell: bash
     - name: Build static content
       working-directory: playground
       run: |
         make public
         npm install
         NODE_ENV=production npm run build
+      shell: bash
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v4
       with:

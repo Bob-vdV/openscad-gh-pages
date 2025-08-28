@@ -6,9 +6,14 @@ on:
   workflow_dispatch: 
 jobs:
   hello:
+    environment:
+      name: github-pages
+      url: ${{ steps.openscad-deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./
+      - name: Deploy openscad customizer
+        uses: ./
+        id: openscad-deployment
         with:
           filename: "t2.scad"
