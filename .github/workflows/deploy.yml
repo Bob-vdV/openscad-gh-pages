@@ -32,13 +32,12 @@ jobs:
       - name: Build static content
         working-directory: playground
         run: |
-          make public
+          npm run build:all
           npm install
-          NODE_ENV=production npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: 'playground/dist'
+          path: "playground/dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
