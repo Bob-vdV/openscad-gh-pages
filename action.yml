@@ -40,9 +40,8 @@ runs:
     - name: Build static content
       working-directory: playground
       run: |
-        make public
         npm install
-        NODE_ENV=production npm run build
+        npm run build:all
       shell: bash
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v4

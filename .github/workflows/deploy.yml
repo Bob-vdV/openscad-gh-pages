@@ -32,8 +32,8 @@ jobs:
       - name: Build static content
         working-directory: playground
         run: |
-          npm run build:all
           npm install
+          npm run build:all
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
