@@ -43,9 +43,11 @@ runs:
         npm run build:all
       shell: bash
     - name: Upload artifact
+      if: !inputs.dry-run 
       uses: actions/upload-pages-artifact@v4
       with:
         path: 'playground/dist'
     - name: Deploy to GitHub Pages
+      if: !inputs.dry-run
       id: deployment
       uses: actions/deploy-pages@v4
