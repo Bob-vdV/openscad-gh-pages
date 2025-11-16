@@ -7,24 +7,15 @@ inputs:
     description: "Openscad filename"
     required: true
     default: "test-file.scad"
-  libraries: 
+  libraries:
     description: "JSON file with included libraries"
     required: false
-    default: ""
+    default: ''
 
 outputs:
   page_url:
     description: "url of github pages deployment"
     value: ${{ steps.deployment.outputs.page_url }}
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 runs:
   using: "composite"
@@ -42,8 +33,8 @@ runs:
       run: cp ${{ inputs.filename }} playground/public/playground.scad
       shell: bash
     - name: Replace default libraries
-      if: ${{inputs.libraries != ""}}
-      run: cp ${{ inputs.libraries}} playgound/libs-config.json
+      if: ${{ inputs.libraries != '' }}
+      run: cp ${{ inputs.libraries }} playground/libs-config.json
       shell: bash
     - name: Build static content
       working-directory: playground
