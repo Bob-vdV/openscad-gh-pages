@@ -7,6 +7,10 @@ inputs:
     description: "Openscad filename"
     required: true
     default: "test-file.scad"
+  libraries: 
+    description: "JSON file with included libraries"
+    required: false
+    default: ""
 
 outputs:
   page_url:
@@ -36,6 +40,10 @@ runs:
       shell: bash
     - name: Copy openscad file
       run: cp ${{ inputs.filename }} playground/public/playground.scad
+      shell: bash
+    - name: Replace default libraries
+      if: $ {{ inputs.libraries != "" }}
+      run: cp ${{ inputs.libraries}} playgound/libs-config.json
       shell: bash
     - name: Build static content
       working-directory: playground
