@@ -8,27 +8,14 @@ inputs:
     required: true
     default: "test-file.scad"
   libraries:
-    description: "Included openscad libraries"
-    required: false 
-    default: ""
-  dry-run:
-    description: "Run everything without changes to GH pages"
+    description: "JSON file with included libraries"
     required: false
-    default: false
+    default: ''
 
 outputs:
   page_url:
     description: "url of github pages deployment"
     value: ${{ steps.deployment.outputs.page_url }}
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 runs:
   using: "composite"
@@ -40,10 +27,14 @@ runs:
     - name: Set up Docker
       uses: docker/setup-docker-action@v4
     - name: Clone openscad playground
-      run: git clone https://github.com/Bob-vdV/openscad-playground.git playground
+      run: git clone -b dev https://github.com/Bob-vdV/openscad-playground.git playground
       shell: bash
     - name: Copy openscad file
       run: cp ${{ inputs.filename }} playground/public/playground.scad
+      shell: bash
+    - name: Replace default libraries
+      if: ${{ inputs.libraries != '' }}
+      run: cp ${{ inputs.libraries }} playground/libs-config.json
       shell: bash
     - name: Build static content
       working-directory: playground

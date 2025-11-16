@@ -22,4 +22,5 @@ jobs:
         id: openscad-deployment
         with:
           repository: Bob-vdV/openscad-gh-pages 
-          filename: "t2.scad"
+          filename: "example/main_file.scad"
+          libraries: "example/libraries.json"
