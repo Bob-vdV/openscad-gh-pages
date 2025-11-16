@@ -7,6 +7,14 @@ inputs:
     description: "Openscad filename"
     required: true
     default: "test-file.scad"
+  libraries:
+    description: "Included openscad libraries"
+    required: false 
+    default: ""
+  dry-run:
+    description: "Run everything without changes to GH pages"
+    required: false
+    default: false
 
 outputs:
   page_url:
@@ -44,9 +52,11 @@ runs:
         npm run build:all
       shell: bash
     - name: Upload artifact
+      if: ${{ !inputs.dry-run }}
       uses: actions/upload-pages-artifact@v4
       with:
         path: 'playground/dist'
     - name: Deploy to GitHub Pages
+      if: $ {{ !inputs.dry-run }}
       id: deployment
       uses: actions/deploy-pages@v4
