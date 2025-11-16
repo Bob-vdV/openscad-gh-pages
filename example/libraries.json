@@ -33,6 +33,14 @@
                 "*.scad",
                 "LICENSE"
             ]
+        },
+        {
+            "name": "FooBar",
+            "repo": "https://github.com/Bob-vdV/openscad-gh-pages.git",
+            "branch": "main",
+            "zipIncludes": [
+                "example/example_library.scad"
+            ]
         }
     ],
     "fonts": {

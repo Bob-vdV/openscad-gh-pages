@@ -27,7 +27,7 @@ runs:
     - name: Set up Docker
       uses: docker/setup-docker-action@v4
     - name: Clone openscad playground
-      run: git clone https://github.com/Bob-vdV/openscad-playground.git playground
+      run: git clone -b dev https://github.com/Bob-vdV/openscad-playground.git playground
       shell: bash
     - name: Copy openscad file
       run: cp ${{ inputs.filename }} playground/public/playground.scad
