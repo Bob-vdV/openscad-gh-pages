@@ -33,7 +33,8 @@ In your own Github repository with an openscad project, follow these steps:
             uses: ./
             id: openscad-deployment
             with:
-            repository: Bob-vdV/openscad-gh-pages 
-            filename: "my-filename.scad"
+                repository: Bob-vdV/openscad-gh-pages 
+                filename: "example/main_file.scad"
+                libraries: "example/libraries.json"
     ```
   3. Replace the filename with your openscad filename

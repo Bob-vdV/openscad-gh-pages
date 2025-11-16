@@ -2,6 +2,9 @@
 Test file for (WIP) github pages openscad action
 */
 
+include <FooBar/example/example_library.scad>
+include <BOSL/transforms.scad>
+
 title = "Hello Github pages!";
 
 color("gray")
@@ -10,3 +13,7 @@ color("gray")
             text(title,
                 halign="center",
                 valign="center");
+
+down(15)
+rotate([90, 0, 0])
+FooBar();
