@@ -8,7 +8,7 @@ permissions:
 on:
   push:
     branches: ["main"]
-  workflow_dispatch: 
+  workflow_dispatch:
 jobs:
   deploy:
     environment:
@@ -16,11 +16,10 @@ jobs:
       url: ${{ steps.openscad-deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - name: Deploy openscad customizer
         uses: ./
         id: openscad-deployment
         with:
-          repository: Bob-vdV/openscad-gh-pages 
           filename: "example/main_file.scad"
           libraries: "example/libraries.json"

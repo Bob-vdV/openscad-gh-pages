@@ -10,7 +10,7 @@ inputs:
   libraries:
     description: "JSON file with included libraries"
     required: false
-    default: ''
+    default: ""
 
 outputs:
   page_url:
@@ -21,7 +21,9 @@ runs:
   using: "composite"
   steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
+      with:
+        repository: Bob-vdV/openscad-gh-pages
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Set up Docker
@@ -45,7 +47,7 @@ runs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v4
       with:
-        path: 'playground/dist'
+        path: "playground/dist"
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
