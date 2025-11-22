@@ -1,4 +1,6 @@
 # Openscad Playground Github pages test
+![Example deployment](images/example.png)
+
 Deployed on [http://bobvdv.nl/openscad-gh-pages/](http://bobvdv.nl/openscad-gh-pages/)
 
 Deploys a single openscad file to an online openscad playground using github pages. 
@@ -28,13 +30,17 @@ In your own Github repository with an openscad project, follow these steps:
         url: ${{ steps.openscad-deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v2
+      - name: Checkout pages action
+        uses: actions/checkout@v5
+        with:
+          repository: Bob-vdV/openscad-gh-pages
+          path: ./openscad-gh-pages
         - name: Deploy openscad customizer
             uses: ./
             id: openscad-deployment
             with:
-                repository: Bob-vdV/openscad-gh-pages 
+                repository: Bob-vdV/openscad-gh-pages # Replace with your repo
                 filename: "example/main_file.scad"
                 libraries: "example/libraries.json"
     ```
-  3. Replace the filename with your openscad filename
+  3. Replace the repository, filename and libraries with yours

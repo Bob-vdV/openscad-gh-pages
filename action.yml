@@ -20,14 +20,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v5
-      with:
-        path: ./
     - name: Setup Pages
       uses: actions/configure-pages@v5
-    - name: Set up Docker
-      uses: docker/setup-docker-action@v4
     - name: Clone openscad playground
       run: git clone -b main https://github.com/Bob-vdV/openscad-playground.git playground
       shell: bash
